@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/RPMWiki/" />
-    <title>RPMWiki — Категории правил</title>
+    <title>RPMWiki — Правила сервера</title>
     <style>
       :root {
         --bg: #f3f6fb;
@@ -12,6 +12,7 @@
         --text: #111827;
         --muted: #6b7280;
         --accent: #2563eb;
+        --accent-2: #1d4ed8;
         --border: #e5e7eb;
       }
 
@@ -19,233 +20,262 @@
       body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background: var(--bg);
+        background: linear-gradient(135deg, #f3f6fb 0%, #e8eef7 100%);
         color: var(--text);
-        padding: 24px;
+        padding: 32px 24px;
       }
 
       .page {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: 280px 1fr;
-        gap: 24px;
       }
 
-      .sidebar {
-        background: var(--panel);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 24px;
-        height: fit-content;
-        position: sticky;
-        top: 24px;
+      .header {
+        text-align: center;
+        margin-bottom: 48px;
       }
 
-      .sidebar h2 {
-        margin-top: 0;
+      .header h1 {
+        margin: 0 0 12px;
+        font-size: 2.5rem;
+        background: linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .header p {
+        margin: 0;
+        color: var(--muted);
         font-size: 1.1rem;
       }
 
-      .sidebar nav {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 24px;
+        margin-bottom: 32px;
       }
 
-      .sidebar a {
-        text-decoration: none;
-        color: var(--text);
-        padding: 10px 12px;
-        border-radius: 10px;
-        background: #f9fafb;
-        transition: background 0.2s ease;
-      }
-
-      .sidebar a:hover {
-        background: #e8f0ff;
-        color: var(--accent);
-      }
-
-      .content {
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-      }
-
-      .section {
+      .card {
         background: var(--panel);
         border: 1px solid var(--border);
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 24px;
+        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        cursor: pointer;
       }
 
-      .section h1, .section h2 {
-        margin-top: 0;
+      .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
       }
 
-      .section p, .section li {
-        color: var(--muted);
-        line-height: 1.7;
-      }
-
-      .jump-links {
+      .card-icon {
+        width: 48px;
+        height: 48px;
+        background: linear-gradient(135deg, #e8f0ff 0%, #dbeafe 100%);
+        border-radius: 12px;
         display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin: 12px 0 0;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        margin-bottom: 16px;
       }
 
-      .jump-links a {
-        display: inline-block;
-        padding: 8px 10px;
-        border-radius: 999px;
-        background: #eef4ff;
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: 1.3rem;
+        color: var(--text);
+      }
+
+      .card p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+
+      .card ul {
+        margin: 0;
+        padding-left: 20px;
+        list-style: none;
+      }
+
+      .card ul li {
+        color: var(--muted);
+        margin-bottom: 8px;
+        padding-left: 20px;
+        position: relative;
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+
+      .card ul li:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
         color: var(--accent);
-        text-decoration: none;
-        font-size: 0.9rem;
-        font-weight: 700;
+        font-weight: bold;
       }
 
       .back-link {
         display: inline-block;
-        margin-top: 16px;
+        margin-top: 24px;
+        padding: 12px 20px;
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 12px;
         color: var(--accent);
-        font-weight: 700;
         text-decoration: none;
+        font-weight: 700;
+        transition: all 0.2s ease;
       }
 
-      @media (max-width: 900px) {
-        .page {
+      .back-link:hover {
+        background: #f9fafb;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .cards-grid {
           grid-template-columns: 1fr;
         }
 
-        .sidebar {
-          position: static;
+        .header h1 {
+          font-size: 1.8rem;
         }
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <aside class="sidebar">
-        <h2>Категории</h2>
-        <nav>
-          <a href="#main-rules">Основные правила сервера</a>
-          <a href="#chat-rules">Игровой чат и наказания</a>
-          <a href="#game-rules">Игровой процесс и наказания</a>
-          <a href="#curfew-rules">Правила комендантского часа</a>
-          <a href="map.html">Открыть карту</a>
-        </nav>
-        <a class="back-link" href="index.html">← Вернуться на титульную страницу</a>
-      </aside>
+      <div class="header">
+        <h1>Правила сервера RPMWiki</h1>
+        <p>Каждый игрок обязан следовать этим правилам</p>
+      </div>
 
-      <main class="content">
-        <section id="main-rules" class="section">
-          <h1>Основные правила сервера</h1>
-          <p>Каждый игрок, посетивший проект RPM, автоматически соглашается с данным сводом правил. Незнание правил не освобождает от ответственности.</p>
-
-          <div class="jump-links">
-            <a href="#user-agreement">Пользовательское соглашение</a>
-            <a href="#nicknames">Никнеймы</a>
-            <a href="#rp-names">RP-имена</a>
-            <a href="#skins">Скины</a>
-            <a href="#emotions">Эмоции</a>
-            <a href="#administration">Администрация</a>
-          </div>
-
-          <h2 id="user-agreement">Пользовательское соглашение</h2>
+      <div class="cards-grid">
+        <!-- Пользовательское соглашение -->
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <h2>Пользовательское соглашение</h2>
+          <p>Основные условия посещения проекта</p>
           <ul>
-            <li>Администратор имеет право редактировать правила в любое время без предупреждения.</li>
-            <li>Администрация не несёт ответственности за действия тех игроков, которых вы сами добавили в регион.</li>
-            <li>Пожертвования вносятся на свой страх и риск, средства обратно не возвращаются.</li>
-            <li>Покупка услуг доступна только через официальный сайт donate.rpmserver.ru.</li>
+            <li>Администратор может менять правила без уведомления</li>
+            <li>Администрация не отвечает за добавленные вами игроки</li>
+            <li>Пожертвования — на свой страх и риск</li>
+            <li>Покупки возвращению не подлежат</li>
           </ul>
+        </div>
 
-          <h2 id="nicknames">Никнеймы</h2>
+        <!-- Никнеймы -->
+        <div class="card">
+          <div class="card-icon">🎭</div>
+          <h2>Никнеймы</h2>
+          <p>Требования к выбору игрового имени</p>
           <ul>
-            <li>Запрещены оскорбления, унижения и реклама в никнейме.</li>
-            <li>Запрещено использовать никнеймы администрации и похожие формы вроде admin, moder.</li>
-            <li>Запрещены нацистские и другие опасные символы, способные спровоцировать конфликт.</li>
+            <li>Запрещены оскорбления и унижения</li>
+            <li>Нельзя использовать admin, moder и т.п.</li>
+            <li>Запрещена реклама в нике</li>
+            <li>Недопустимы нацистские символы</li>
           </ul>
+        </div>
 
-          <h2 id="rp-names">RP-имена</h2>
+        <!-- RP-имена -->
+        <div class="card">
+          <div class="card-icon">👤</div>
+          <h2>RP-имена персонажа</h2>
+          <p>Правила для ролевых имён</p>
           <ul>
-            <li>RP-имя должно быть в формате Имя Фамилия на русском языке.</li>
-            <li>Запрещены рофло-фамилии, мат, слова admin/moderator и неестественные имена.</li>
-            <li>Администрация вправе сменить имя, если оно звучит неестественно или нарушает атмосферу проекта.</li>
+            <li>Формат: Имя Фамилия на русском</li>
+            <li>Запрещены рофло-фамилии</li>
+            <li>Имя должно существовать в реальности</li>
+            <li>Администрация вправе изменить имя</li>
           </ul>
+        </div>
 
-          <h2 id="skins">Скины</h2>
+        <!-- Скины -->
+        <div class="card">
+          <div class="card-icon">👕</div>
+          <h2>Скины персонажей</h2>
+          <p>Требования к внешнему виду</p>
           <ul>
-            <li>Скин должен изображать человека и не нарушать правила проекта.</li>
-            <li>Участники фракций обязаны носить униформу в рабочее время.</li>
-            <li>Обнажённые скины, нацистская символика и визуальные эффекты запрещены.</li>
+            <li>Скин должен изображать человека</li>
+            <li>Участники фракций обязаны носить форму</li>
+            <li>Обнажённые скины запрещены</li>
+            <li>Нацистская символика запрещена</li>
           </ul>
+        </div>
 
-          <h2 id="emotions">Эмоции</h2>
+        <!-- Эмоции -->
+        <div class="card">
+          <div class="card-icon">😊</div>
+          <h2>Использование эмоций</h2>
+          <p>Правила для эмоций и анимаций</p>
           <ul>
-            <li>Запрещены нон-РП эмоции, использование эмоций на рейдах, каптах и перестрелках.</li>
-            <li>Запрещён баг-юз с помощью эмоций.</li>
+            <li>Запрещены нон-РП эмоции</li>
+            <li>На рейдах эмоции недопустимы</li>
+            <li>На каптах эмоции недопустимы</li>
+            <li>При перестрелках запрещены</li>
           </ul>
+        </div>
 
-          <h2 id="administration">Администрация</h2>
+        <!-- Игровой чат -->
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h2>Игровой чат</h2>
+          <p>Правила общения в чате сервера</p>
           <ul>
-            <li>Следящий обязан контролировать игровой процесс и действовать в рамках правил.</li>
-            <li>Администратор вправе выбирать меру наказания и не обязан объяснять каждое решение.</li>
-            <li>Оспаривание действий администрации допускается только через официальные каналы проекта.</li>
+            <li>Запрещены оскорбления и расизм</li>
+            <li>Нельзя обсуждать действия администрации</li>
+            <li>Запрещена реклама сторонних проектов</li>
+            <li>Воспрещается массовый флуд и спам</li>
           </ul>
-        </section>
+        </div>
 
-        <section id="chat-rules" class="section">
-          <h2>Игровой чат и наказания</h2>
+        <!-- Игровой процесс -->
+        <div class="card">
+          <div class="card-icon">🎮</div>
+          <h2>Правила игрового процесса</h2>
+          <p>Основные правила поведения в игре</p>
           <ul>
-            <li>Запрещены оскорбления игроков, родных, расизм, нацизм и политические провокации.</li>
-            <li>Запрещены угрозы, шантаж, дезинформация, обман и деанон.</li>
-            <li>Запрещены обсуждение действий персонала в любом проявлении, реклама сторонних проектов и массовый флуд.</li>
-            <li>Запрещены мат, бред, сообщения не по теме и попытки выдать себя за администрацию.</li>
+            <li>Запрещены читы и баги</li>
+            <li>Передача аккаунта недопустима</li>
+            <li>Мультиаккаунты запрещены без согласия</li>
+            <li>Запрещены нечестные ограбления</li>
           </ul>
-        </section>
+        </div>
 
-        <section id="game-rules" class="section">
-          <h2>Игровой процесс и наказания</h2>
+        <!-- Администрация -->
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <h2>Роль администрации</h2>
+          <p>Полномочия и обязанности администратора</p>
           <ul>
-            <li>Запрещено использование читов, багов, дюпов, обходов анти-АФК и других способов получить преимущество.</li>
-            <li>Запрещены передача аккаунта, подделка доказательств, сокрытие нарушений и нон-РП обман.</li>
-            <li>Запрещены создание мультиаккаунтов без согласия администрации и взлом аккаунтов.</li>
-            <li>Запрещены ограбления, заказные убийства и создание криминальных банд без статуса криминальной фракции.</li>
+            <li>Администратор контролирует игровой процесс</li>
+            <li>Вправе выбирать меру наказания</li>
+            <li>Не обязан объяснять каждое решение</li>
+            <li>Оспаривать можно через каналы проекта</li>
           </ul>
-        </section>
+        </div>
 
-        <section id="curfew-rules" class="section">
-          <h2>Правила комендантского часа</h2>
-          <div class="jump-links">
-            <a href="#army-police">Армия и полиция</a>
-            <a href="#criminals">Преступные организации</a>
-            <a href="#general">Общие правила</a>
-          </div>
-
-          <h3 id="army-police">Армия и полиция</h3>
+        <!-- Комендантский час -->
+        <div class="card">
+          <div class="card-icon">🚨</div>
+          <h2>Комендантский час</h2>
+          <p>Специальные правила для комендантского часа</p>
           <ul>
-            <li>Полиция может попросить помощь у армии, но решение остаётся за армией.</li>
-            <li>Комендантский час объявляет только Губернатор, а полиция и армия должны согласовать план действий.</li>
-            <li>Разрешён только ответный огонь.</li>
+            <li>Объявляет только Губернатор</li>
+            <li>Максимум 60 минут длительность</li>
+            <li>Один раз в неделю максимум</li>
+            <li>Полиция и армия координируют действия</li>
           </ul>
+        </div>
+      </div>
 
-          <h3 id="criminals">Преступные организации</h3>
-          <ul>
-            <li>Во время комендантского часа запрещены рейды авианосца, ограбления банка и отбитие в транспорте.</li>
-            <li>Банды могут взять в заложники гражданина, оказавшегося на их территории.</li>
-          </ul>
-
-          <h3 id="general">Общие правила</h3>
-          <ul>
-            <li>Комендантский час можно объявлять только при наличии Губернатора и Шерифа в сети.</li>
-            <li>Продолжительность комендантского часа не может превышать 60 минут.</li>
-            <li>Комендантский час разрешено проводить не чаще одного раза в неделю.</li>
-          </ul>
-        </section>
-      </main>
+      <a class="back-link" href="index.html">← Вернуться на титульную страницу</a>
     </div>
   </body>
 </html>
