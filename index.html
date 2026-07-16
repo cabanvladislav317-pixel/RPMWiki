@@ -228,14 +228,28 @@
         position: fixed;
         right: 24px;
         bottom: 24px;
-        width: min(340px, calc(100vw - 32px));
-        background: rgba(5, 10, 28, 0.98);
+        width: min(360px, calc(100vw - 32px));
+        background: rgba(6, 11, 34, 0.98);
         border: 1px solid rgba(96,165,250,0.22);
         border-radius: 28px;
         padding: 18px;
         box-shadow: 0 35px 90px rgba(0, 0, 0, 0.5);
         z-index: 20;
         backdrop-filter: blur(18px);
+      }
+
+      .support-chat::before {
+        content: 'Чат поддержки';
+        position: absolute;
+        top: -12px;
+        left: 18px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgba(96,165,250,0.12);
+        color: #dbeafe;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
       .support-chat .chat-header {
@@ -268,26 +282,29 @@
       }
 
       .message {
-        max-width: 100%;
-        padding: 12px 14px;
-        border-radius: 18px;
+        max-width: 88%;
+        min-width: 50%;
+        padding: 14px 16px;
+        border-radius: 22px;
         position: relative;
         line-height: 1.5;
         font-size: 0.93rem;
       }
 
       .message.user {
-        align-self: flex-end;
-        background: rgba(96,165,250,0.14);
-        color: #e0f2fe;
-        border: 1px solid rgba(96,165,250,0.24);
+        justify-self: end;
+        background: linear-gradient(135deg, rgba(96,165,250,0.2), rgba(37,99,235,0.18));
+        color: #eff6ff;
+        border: 1px solid rgba(96,165,250,0.28);
+        border-bottom-right-radius: 6px;
       }
 
       .message.agent {
-        align-self: flex-start;
+        justify-self: start;
         background: rgba(255,255,255,0.08);
         color: var(--text);
-        border: 1px solid rgba(255,255,255,0.12);
+        border: 1px solid rgba(255,255,255,0.14);
+        border-bottom-left-radius: 6px;
       }
 
       .message span {
@@ -298,7 +315,38 @@
         display: block;
         margin-top: 8px;
         color: #94a3b8;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
+      }
+
+      .chat-input {
+        display: grid;
+        gap: 10px;
+      }
+
+      .chat-input .input-field {
+        display: flex;
+        gap: 10px;
+      }
+
+      .chat-input input {
+        flex: 1;
+        padding: 12px 14px;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.12);
+        background: rgba(255,255,255,0.05);
+        color: #f8fbff;
+        outline: none;
+        font-size: 0.92rem;
+      }
+
+      .chat-input button {
+        padding: 12px 16px;
+        border-radius: 16px;
+        border: none;
+        background: linear-gradient(135deg, #60a5fa 0%, #7c3aed 100%);
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
       }
 
       .support-chat a {
@@ -396,7 +444,7 @@
           <p class="hero-text">Официальный справочник для участников сервера. Быстрая навигация, актуальные объявления из Discord, и удобный доступ к правилам.</p>
 
           <div class="actions">
-            <a class="btn btn-primary" href="next.html">ПРАВИЛА RPG</a>
+            <a class="btn btn-primary" href="next.html">ПРАВИЛА RPM</a>
             <a class="btn btn-secondary" href="legal.html">АК / УК</a>
             <a class="btn btn-secondary" href="map.html">КАРТА</a>
           </div>
@@ -436,6 +484,12 @@
         <div class="message agent">
           <span>Нажмите кнопку «Карта» и вы попадёте в нужный раздел.</span>
           <small>RPM Support</small>
+        </div>
+      </div>
+      <div class="chat-input">
+        <div class="input-field">
+          <input type="text" placeholder="Введите сообщение..." disabled />
+          <button disabled>Отправить</button>
         </div>
       </div>
       <a href="https://t.me/AlexxGroupBot_bot" target="_blank" rel="noopener">Открыть чат поддержки</a>
