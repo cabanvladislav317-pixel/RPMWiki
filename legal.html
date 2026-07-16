@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/RPMWiki/" />
+    <title>RPMWiki — Административный и Уголовный Кодекс</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --panel: #111827;
+        --panel-2: #1f2937;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --accent: #38bdf8;
+        --accent-2: #818cf8;
+        --danger: #fb7185;
+        --border: rgba(255,255,255,0.12);
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: radial-gradient(circle at top left, #1e3a8a 0%, #0f172a 45%, #020617 100%);
+        color: var(--text);
+        padding: 24px;
+      }
+
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, rgba(56,189,248,0.18), rgba(129,140,248,0.18));
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 32px;
+        margin-bottom: 24px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 20px 50px rgba(2, 6, 23, 0.35);
+      }
+
+      .hero h1 {
+        margin: 0 0 10px;
+        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        line-height: 1.2;
+      }
+
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .toggle-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .pill {
+        display: inline-block;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.08);
+        color: var(--text);
+        border: 1px solid var(--border);
+        text-decoration: none;
+        font-weight: 700;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .pill:hover {
+        transform: translateY(-2px);
+        background: rgba(255,255,255,0.16);
+      }
+
+      .pill.active {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: #fff;
+      }
+
+      .section {
+        display: none;
+        margin-bottom: 20px;
+      }
+
+      .section.active {
+        display: block;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        background: linear-gradient(135deg, rgba(17,24,39,0.95), rgba(31,41,55,0.95));
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(2,6,23,0.25);
+      }
+
+      .card h3 {
+        margin: 0 0 8px;
+        font-size: 1.15rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .card small {
+        display: inline-block;
+        margin-top: 10px;
+        color: #93c5fd;
+        font-weight: 700;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 10px;
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      @media (max-width: 768px) {
+        .cards-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="hero">
+        <h1>Административный и Уголовный Кодекс Штата RPM</h1>
+        <p>Структурированная база правовых статей. Сначала — Административный Кодекс, затем — Уголовный Кодекс.</p>
+      </div>
+
+      <div class="toggle-bar">
+        <a class="pill active" href="#ak" onclick="showSection('ak'); return false;">Административный Кодекс</a>
+        <a class="pill" href="#uk" onclick="showSection('uk'); return false;">Уголовный Кодекс</a>
+      </div>
+
+      <section id="ak" class="section active">
+        <div class="cards-grid">
+          <div class="card">
+            <h3>АК 1. Основные нормы</h3>
+            <p>Незнание законов не освобождает от ответственности. Все правовые нормы должны соблюдаться без исключений.</p>
+            <small>Статья 1</small>
+          </div>
+          <div class="card">
+            <h3>АК 2. Порядок на публичных мероприятиях</h3>
+            <p>Митинги разрешаются только в рамках мирного протеста и при соблюдении правил общественного порядка.</p>
+            <small>Статья 2</small>
+          </div>
+          <div class="card">
+            <h3>АК 3. Полицейские полномочия</h3>
+            <p>Полиция обязана реагировать на правонарушения, обеспечивать безопасность и соблюдать законность.</p>
+            <small>Статья 3</small>
+          </div>
+          <div class="card">
+            <h3>АК 4. Судебный процесс</h3>
+            <p>Судебные заседания проходят по установленному порядку, с соблюдением субординации и прав сторон.</p>
+            <small>Статья 4</small>
+          </div>
+          <div class="card">
+            <h3>АК 5. Протоколы и доказательства</h3>
+            <p>Все доказательства должны быть предоставлены в надлежащем порядке и оформлены соответствующим образом.</p>
+            <small>Статья 5</small>
+          </div>
+        </div>
+      </section>
+
+      <section id="uk" class="section">
+        <div class="cards-grid">
+          <div class="card">
+            <h3>УК 1. Умышленные преступления</h3>
+            <p>Нанесение ущерба, насилие и другие умышленные противоправные действия рассматриваются в рамках уголовного законодательства.</p>
+            <small>Статья 1</small>
+          </div>
+          <div class="card">
+            <h3>УК 2. Уголовные деяния против порядка</h3>
+            <p>Служебные злоупотребления, подделка доказательств и нарушение порядка караются в соответствии с законом.</p>
+            <small>Статья 2</small>
+          </div>
+          <div class="card">
+            <h3>УК 3. Преступления против безопасности</h3>
+            <p>Использование оружия, угроза жизни или попытка причинить вред рассматриваются как тяжкие правонарушения.</p>
+            <small>Статья 3</small>
+          </div>
+          <div class="card">
+            <h3>УК 4. Служебные преступления</h3>
+            <p>Действия должностных лиц во вред обществу и правопорядку подлежат особому рассмотрению.</p>
+            <small>Статья 4</small>
+          </div>
+          <div class="card">
+            <h3>УК 5. Особые обстоятельства</h3>
+            <p>Суд учитывает смягчающие и отягчающие обстоятельства, а также последствия противоправного поведения.</p>
+            <small>Статья 5</small>
+          </div>
+        </div>
+      </section>
+
+      <a class="back-link" href="index.html">← Назад на главную</a>
+    </div>
+
+    <script>
+      function showSection(id) {
+        document.querySelectorAll('.section').forEach(function (section) {
+          section.classList.remove('active');
+        });
+        document.querySelectorAll('.pill').forEach(function (pill) {
+          pill.classList.remove('active');
+        });
+        document.getElementById(id).classList.add('active');
+        document.querySelector('.pill[href="#' + id + '"]').classList.add('active');
+      }
+    </script>
+  </body>
+</html>

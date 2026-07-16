@@ -144,6 +144,25 @@
         color: var(--text);
         box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
       }
+
+      .support-box {
+        margin-top: 20px;
+        padding: 14px 16px;
+        background: rgba(248, 250, 252, 0.9);
+        border: 1px solid #dbeafe;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      .support-box a {
+        color: #2563eb;
+        font-weight: 700;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
@@ -154,7 +173,13 @@
       <p>Мы стараемся сделать ваш опыт использования максимально комфортным</p>
       <div class="actions">
         <a class="btn btn-primary" href="next.html">Начать</a>
+        <a class="btn btn-secondary" href="legal.html">АК / УК</a>
         <a class="btn btn-secondary" href="map.html">Открыть карту</a>
+      </div>
+
+      <div class="support-box">
+        <span>Нужна помощь? Напишите в поддержку</span>
+        <a href="https://t.me/your_support_bot" target="_blank" rel="noopener">Открыть чат</a>
       </div>
     </main>
   </body>
