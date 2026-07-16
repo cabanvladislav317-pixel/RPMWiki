@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <base href="/RPMWiki/" />
+    <title>RPMWiki — Карта</title>
+    <style>
+      :root {
+        --bg: #f3f6fb;
+        --panel: #ffffff;
+        --text: #111827;
+        --muted: #6b7280;
+        --accent: #2563eb;
+        --border: #e5e7eb;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        padding: 24px;
+      }
+
+      .page {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        margin-bottom: 20px;
+      }
+
+      .header h1 {
+        margin: 0 0 8px;
+      }
+
+      .header p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 16px;
+        box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      }
+
+      iframe {
+        width: 100%;
+        min-height: 80vh;
+        border: 0;
+        border-radius: 12px;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 16px;
+        color: var(--accent);
+        font-weight: 700;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="header">
+        <h1>Карта проекта</h1>
+        <p>Открываем интерактивную карту на отдельной странице.</p>
+      </div>
+
+      <div class="card">
+        <iframe src="https://mirmll.github.io/UniverTutor/map" title="Карта проекта"></iframe>
+      </div>
+
+      <a class="back-link" href="index.html">← Вернуться на титульную страницу</a>
+    </div>
+  </body>
+</html>
