@@ -21,7 +21,9 @@
       body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(180deg, #87ceeb 0%, #e0f6ff 25%, #87ceeb 50%, #4a90e2 100%);
+        background:
+          radial-gradient(circle at 80% -10%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 25%),
+          linear-gradient(180deg, #71c7f8 0%, #8cc3f5 15%, #96b8db 30%, #6293c9 55%, #294f84 80%, #0b1b3a 100%);
         color: var(--text);
         min-height: 100vh;
         display: grid;
@@ -34,12 +36,14 @@
       body::before {
         content: '';
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 40%;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(135, 206, 235, 0.1) 100%);
-        pointer-events: none;
+        top: 8%;
+        left: 10%;
+        width: 300px;
+        height: 120px;
+        background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.9), rgba(255,255,255,0.05));
+        border-radius: 50%;
+        filter: blur(10px);
+        opacity: 0.7;
         z-index: 1;
       }
 
@@ -50,10 +54,59 @@
         left: 0;
         width: 100%;
         height: 35%;
-        background: linear-gradient(90deg, #5a6b4d 0%, #6b8d5f 15%, #4a5f3f 25%, #7a9a6f 35%, #5a7a4f 50%, #6a8a5f 65%, #4a6a3f 80%, #5a7a4f 100%);
-        pointer-events: none;
+        background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(22, 81, 176, 0.65) 45%, rgba(22, 81, 176, 0.95) 100%);
         z-index: 2;
-        clip-path: polygon(0 30%, 5% 25%, 8% 20%, 12% 18%, 15% 22%, 18% 15%, 22% 12%, 25% 18%, 28% 14%, 32% 10%, 35% 16%, 38% 12%, 42% 8%, 45% 14%, 48% 10%, 52% 6%, 55% 12%, 58% 8%, 62% 4%, 65% 10%, 68% 6%, 72% 2%, 75% 8%, 78% 4%, 82% 0%, 85% 6%, 88% 2%, 92% 0%, 95% 5%, 100% 0%, 100% 100%, 0 100%);
+      }
+
+      .clouds {
+        position: fixed;
+        top: 6%;
+        left: 5%;
+        width: 100%;
+        height: 160px;
+        background:
+          radial-gradient(circle at 20% 40%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 25%),
+          radial-gradient(circle at 40% 50%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 30%),
+          radial-gradient(circle at 65% 35%, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0) 25%),
+          radial-gradient(circle at 80% 50%, rgba(255,255,255,0.88) 0%, rgba(255,255,255,0) 22%);
+        opacity: 0.95;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .water {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.08) 0%, transparent 15%),
+          linear-gradient(180deg, rgba(148, 205, 255, 0.15) 0%, rgba(19, 74, 145, 0.8) 100%);
+        z-index: 2;
+      }
+
+      .shore {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 12%;
+        background: linear-gradient(90deg, #f5f0dc 0%, #f8f4dc 35%, #e0d2a6 55%, #d3c089 100%);
+        clip-path: polygon(0 20%, 8% 12%, 15% 24%, 22% 18%, 30% 26%, 38% 12%, 48% 28%, 55% 14%, 64% 22%, 72% 10%, 80% 24%, 88% 16%, 100% 22%, 100% 100%, 0 100%);
+        z-index: 3;
+      }
+
+      .shore::before {
+        content: '';
+        position: absolute;
+        right: 12%;
+        bottom: 12px;
+        width: 90px;
+        height: 22px;
+        background: rgba(255,255,255,0.4);
+        border-radius: 999px;
+        filter: blur(3px);
       }
 
       .rpm-title {
@@ -72,16 +125,35 @@
 
       .card {
         width: min(100%, 760px);
-        background: var(--panel);
-        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(255,255,255,0.25);
         border-radius: 24px;
-        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15), 0 0 40px rgba(74, 144, 226, 0.1);
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.18), 0 0 40px rgba(255, 255, 255, 0.2);
         padding: 48px;
         position: relative;
         z-index: 10;
-        backdrop-filter: blur(10px);
-        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(18px);
         margin-top: 80px;
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255,255,255,0));
+        pointer-events: none;
+      }
+
+      .card::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, rgba(56,189,248,0.8), rgba(129,140,248,0.6), rgba(56,189,248,0.8));
+        border-radius: 999px;
       }
 
       .eyebrow {
@@ -166,7 +238,10 @@
     </style>
   </head>
   <body>
+    <div class="clouds"></div>
     <div class="rpm-title">RPM</div>
+    <div class="water"></div>
+    <div class="shore"></div>
     <main class="card">
       <span class="eyebrow">RPMWiki</span>
       <h1>Добро пожаловать на RPMWiki</h1>
